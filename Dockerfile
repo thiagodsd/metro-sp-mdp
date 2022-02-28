@@ -18,6 +18,12 @@ RUN chown -R kedro:${KEDRO_GID} /home/kedro
 USER kedro
 RUN chmod -R a+w /home/kedro
 
-EXPOSE 8888
+# EXPOSE 8888
 
 CMD ["kedro", "run"]
+
+WORKDIR /app
+ADD . /app
+
+EXPOSE 80
+ENTRYPOINT ["python3", "app.py"]
