@@ -36,7 +36,7 @@ def fuzz_string(estacao:str, serie:pd.Series) -> str:
     fuzz_string
     """
     ord_serie = serie.apply(
-        lambda x: (x, fuzz.partial_ratio(estacao, "estação butatã"))
+        lambda x: (x, fuzz.token_sort_ratio(x, estacao))
     ).values
     return sorted(ord_serie, key=lambda t: t[1], reverse=True)[0][0]
 
