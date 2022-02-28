@@ -11,9 +11,9 @@ def hello_world():
     return 'Hello World!'
 
 
-@app.route('/2020/01/05/')
+@app.route('/index')
 def form_input():
-    return render_template('memoria-da-maquina.html')
+    return render_template('index.html')
 
 
 @app.route('/resolve', methods=['post'])
