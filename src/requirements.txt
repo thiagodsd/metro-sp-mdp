@@ -37,7 +37,9 @@ cachetools==4.2.4
 certifi==2021.10.8
     # via requests
 cffi==1.15.0
-    # via argon2-cffi-bindings
+    # via
+    #   argon2-cffi-bindings
+    #   cryptography
 chardet==4.0.0
     # via
     #   binaryornot
@@ -54,6 +56,8 @@ cookiecutter==1.7.3
     # via kedro
 coverage[toml]==6.3.2
     # via pytest-cov
+cryptography==36.0.1
+    # via pyopenssl
 debugpy==1.5.1
     # via ipykernel
 decorator==5.1.1
@@ -275,6 +279,8 @@ pygments==2.11.2
     #   jupyterlab-pygments
     #   nbconvert
     #   qtconsole
+pyopenssl==22.0.0
+    # via -r /home/dusodeth/Documents/github/metro-sp-mdp/src/requirements.in
 pyparsing==3.0.7
     # via packaging
 pyrsistent==0.18.1
