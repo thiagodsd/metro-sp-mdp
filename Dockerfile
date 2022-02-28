@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=python:3.6-buster
+ARG BASE_IMAGE=python:3
 FROM $BASE_IMAGE
 
 USER root
