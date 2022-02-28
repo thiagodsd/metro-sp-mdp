@@ -5,7 +5,7 @@
         <title>metro-sp-mdp</title>
     </head>
     <body>
-        <form class="" action="{{ url_for('index') }}" method="POST">
+        <form class="" action="{{ url_for('form_input') }}" method="POST">
             <label for="metro_from">da estação </label> <input type="text" name="metro_from" id='metro_from'> 
             <label for="metro_to">para a estação </label> <input type="text" name="metro_to" id='metro_to'> 
             <button type="submit" name="button">resolver</button>
@@ -16,7 +16,7 @@
         <div class="resultado">
             {% if result %}
                 {% for value in result %}
-                    {{ value }} -> 
+                    {{ value }} - 
                 {% endfor %}
             {% endif %}
         </div>

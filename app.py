@@ -1,14 +1,15 @@
 from flask import (
     Flask,
     render_template,
-    request
+    request,
+    url_for
 )
 
 import pandas as pd
 import metro_sp_mdp.pipelines.mdp as sp_mdp
 
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 
 # @app.route('/')
 # def hello_world():
@@ -31,7 +32,7 @@ def form_input():
             if r in metro_to:
                 metro_to = metro_to.replace(r, "")
 
-        df = pd.read_csv("metrosp_stations.csv")
+        df = pd.read_csv("data/01_raw/metrosp_stations.csv")
 
         metro_from_fuzz = sp_mdp.nodes.fuzz_string(str(metro_from), df['station'])
         metro_to_fuzz = sp_mdp.nodes.fuzz_string(str(metro_to), df['station'])
