@@ -3,13 +3,14 @@ This is a boilerplate pipeline 'mdp'
 generated using Kedro 0.17.6
 """
 
-from typing import Dict, Type
 
 import pandas as pd
+from thefuzz import fuzz
+from typing import List, Dict, Type
 
 
 def tratamento(data: pd.DataFrame) -> pd.DataFrame:
-    r"""
+    """
     tratamento
     """
     cores = {
@@ -30,8 +31,18 @@ def tratamento(data: pd.DataFrame) -> pd.DataFrame:
     return data
 
 
+def fuzz_string(estacao:str, serie:pd.Series) -> str:
+    """
+    fuzz_string
+    """
+    ord_serie = serie.apply(
+        lambda x: (x, fuzz.token_sort_ratio(x, estacao))
+    ).values
+    return sorted(ord_serie, key=lambda t: t[1], reverse=True)[0][0]
+
+
 def grafo(data: pd.DataFrame) -> Dict:
-    r"""
+    """
     grafo
     """
     g = {
@@ -44,28 +55,30 @@ def grafo(data: pd.DataFrame) -> Dict:
     return g
 
 
-def funcao_custo(s, S):
-    r"""
+def funcao_custo(s:List, S:List) -> float:
+    """
     funcao_custo
     """
-    sy, sx = s["pos"][0], s["pos"][1]
-    Sy, Sx = S["pos"][0], S["pos"][1]
+    sy, sx = s[0], s[1]
+    Sy, Sx = S[0], S[1]
     return ((sx - Sx) ** 2 + (sy - Sy) ** 2) ** (0.5)
 
 
 def custo(mdp_grafo: Dict) -> Dict:
-    r"""
+    """
     custo
     """
     c = dict()
     for s in mdp_grafo:
         for S in mdp_grafo[s]["neigh"]:
-            c[(s, S)] = funcao_custo(mdp_grafo[s], mdp_grafo[S])
+            pos_s = mdp_grafo[s]["pos"]
+            pos_S = mdp_grafo[S]["pos"]
+            c[(s, S)] = funcao_custo(pos_s, pos_S)
     return c
 
 
 class Node:
-    r"""
+    """
     class Node
     """
 
@@ -85,7 +98,7 @@ class Node:
 
 
 class Stack:
-    r"""
+    """
     class Stack
     """
 
@@ -106,7 +119,7 @@ class Stack:
 
 
 class Problem(object):
-    r"""
+    """
     class Problem
     """
 
@@ -142,7 +155,7 @@ class Problem(object):
 
 
 def depthFirstSearch(problem):
-    r"""
+    """
     depthFirstSearch
     """
     node = Node(problem.start, 0)
@@ -165,14 +178,14 @@ def depthFirstSearch(problem):
 
 
 def carrega_mdp(data:pd.DataFrame, metro_from:str, metro_to:str) -> Type:
-    r"""
+    """
     carrega_mdp
     """
     return Problem(data, metro_from, metro_to)
 
 
 def resolve_mdp(mdp:Type) -> Dict:
-    r"""
+    """
     resolve_mdp
     """
     parent = depthFirstSearch(mdp)
