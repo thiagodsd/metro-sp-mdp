@@ -25,5 +25,5 @@ CMD ["kedro", "run"]
 WORKDIR /app
 ADD . /app
 
-EXPOSE 80
+EXPOSE 443
 ENTRYPOINT ["python3", "app.py"]
