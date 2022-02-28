@@ -1,24 +1,12 @@
 ARG BASE_IMAGE=python:3.6-buster
 FROM $BASE_IMAGE
 
-# install project requirements
-RUN pip install --upgrade pip
-COPY src/requirements.txt /tmp/requirements.txt
-RUN pip install -r /tmp/requirements.txt && rm -f /tmp/requirements.txt
+USER root
+WORKDIR /app
+ADD . /app
+RUN apt update && apt install --no-install-recommends -y python3-dev  gcc build-essential
+RUN pip install --trusted-host pypi.python.org -r requirements.txt
+RUN pip install src/dist/metro_sp_mdp-0.1-py3-none-any.whl
+EXPOSE 8080
 
-# add kedro user
-ARG KEDRO_UID=999
-ARG KEDRO_GID=0
-RUN groupadd -f -g ${KEDRO_GID} kedro_group && \
-useradd -d /home/kedro -s /bin/bash -g ${KEDRO_GID} -u ${KEDRO_UID} kedro
-
-# copy the whole project except what is in .dockerignore
-WORKDIR /home/kedro
-COPY . .
-RUN chown -R kedro:${KEDRO_GID} /home/kedro
-USER kedro
-RUN chmod -R a+w /home/kedro
-
-EXPOSE 8888
-
-CMD ["kedro", "run"]
+ENTRYPOINT ["python", "app.py"]
