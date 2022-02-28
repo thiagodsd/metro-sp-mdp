@@ -19,6 +19,9 @@ with open("requirements.txt", encoding="utf-8") as f:
 setup(
     name="metro_sp_mdp",
     version="0.1",
+    url="https://github.com/thiagodsd/metro-sp-mdp",
+    author="thiagodsd",
+    author_email="thiagodsd@thiagodsd.com",
     packages=find_packages(exclude=["tests"]),
     entry_points={"console_scripts": [entry_point]},
     install_requires=requires,

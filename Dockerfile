@@ -4,6 +4,7 @@ FROM $BASE_IMAGE
 # install project requirements
 COPY src/requirements.txt /tmp/requirements.txt
 RUN pip install -r /tmp/requirements.txt && rm -f /tmp/requirements.txt
+RUN pip install metro-sp-mdp
 RUN pip install --user kaggle
 
 # add kedro user
