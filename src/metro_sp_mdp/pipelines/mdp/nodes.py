@@ -3,7 +3,7 @@ This is a boilerplate pipeline 'mdp'
 generated using Kedro 0.17.6
 """
 
-from typing import Dict
+from typing import Dict, Type
 
 import pandas as pd
 
@@ -162,3 +162,24 @@ def depthFirstSearch(problem):
                 cost = problem.cost(node.state, act) + node.cost
                 frontier.push(Node(next_state, cost, node, act))
     return None
+
+
+def carrega_mdp(data:pd.DataFrame, metro_from:str, metro_to:str) -> Type:
+    r"""
+    carrega_mdp
+    """
+    return Problem(data, metro_from, metro_to)
+
+
+def resolve_mdp(mdp:Type) -> Dict:
+    r"""
+    resolve_mdp
+    """
+    parent = depthFirstSearch(mdp)
+    estacoes = list()
+
+    while parent != None:
+        estacoes.append( parent.state )
+        parent = parent.parent
+
+    return {"estacoes": estacoes[::-1]}

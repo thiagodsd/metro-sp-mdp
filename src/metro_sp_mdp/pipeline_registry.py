@@ -3,6 +3,8 @@ from typing import Dict
 
 from kedro.pipeline import Pipeline
 
+from metro_sp_mdp.pipelines import mdp
+
 
 def register_pipelines() -> Dict[str, Pipeline]:
     """Register the project's pipelines.
@@ -10,4 +12,7 @@ def register_pipelines() -> Dict[str, Pipeline]:
     Returns:
         A mapping from a pipeline name to a ``Pipeline`` object.
     """
-    return {"__default__": Pipeline([])}
+
+    pipeline_mdp = mdp.create_pipeline()
+
+    return {"__default__": pipeline_mdp}
