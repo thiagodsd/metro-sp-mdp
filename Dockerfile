@@ -2,6 +2,7 @@ ARG BASE_IMAGE=python:3.6-buster
 FROM $BASE_IMAGE
 
 # install project requirements
+RUN pip install --upgrade pip
 COPY src/requirements.txt /tmp/requirements.txt
 RUN pip install -r /tmp/requirements.txt && rm -f /tmp/requirements.txt
 

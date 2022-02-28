@@ -51,8 +51,6 @@ click==7.1.2
     #   pip-tools
 cookiecutter==1.7.3
     # via kedro
-coverage[toml]==6.3.2
-    # via pytest-cov
 debugpy==1.5.1
     # via ipykernel
 decorator==5.1.1
@@ -276,10 +274,7 @@ pyrsistent==0.18.1
 pytest==6.2.5
     # via
     #   -r /home/dusodeth/Documents/github/metro-sp-mdp/src/requirements.in
-    #   pytest-cov
     #   pytest-mock
-pytest-cov==3.0.0
-    # via -r /home/dusodeth/Documents/github/metro-sp-mdp/src/requirements.in
 pytest-mock==1.13.0
     # via -r /home/dusodeth/Documents/github/metro-sp-mdp/src/requirements.in
 python-dateutil==2.8.2
@@ -345,9 +340,7 @@ toml==0.10.2
     #   kedro
     #   pytest
 tomli==2.0.1
-    # via
-    #   coverage
-    #   pep517
+    # via pep517
 toposort==1.7
     # via kedro
 tornado==6.1
