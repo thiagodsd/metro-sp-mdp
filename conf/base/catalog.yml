@@ -8,10 +8,10 @@ estacoes_limpa:
   filepath: data/03_primary/metrosp_stations.csv
   layer: primary
 
-estacoes_screenshot:
-  type: pillow.ImageDataSet
-  filepath: data/03_primary/metrosp_stations.png
-  layer: primary
+# estacoes_screenshot:
+#   type: pillow.ImageDataSet
+#   filepath: data/03_primary/metrosp_stations.png
+#   layer: primary
 
 json_resultado:
   type: json.JSONDataSet

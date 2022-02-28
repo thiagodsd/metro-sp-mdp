@@ -37,7 +37,9 @@ cachetools==4.2.4
 certifi==2021.10.8
     # via requests
 cffi==1.15.0
-    # via argon2-cffi-bindings
+    # via
+    #   argon2-cffi-bindings
+    #   cryptography
 chardet==4.0.0
     # via
     #   binaryornot
@@ -46,6 +48,7 @@ click==7.1.2
     # via
     #   black
     #   cookiecutter
+    #   flask
     #   kedro
     #   kedro-telemetry
     #   pip-tools
@@ -53,6 +56,8 @@ cookiecutter==1.7.3
     # via kedro
 coverage[toml]==6.3.2
     # via pytest-cov
+cryptography==36.0.1
+    # via pyopenssl
 debugpy==1.5.1
     # via ipykernel
 decorator==5.1.1
@@ -66,6 +71,8 @@ entrypoints==0.4
     #   jupyterlab-server
     #   nbconvert
 flake8==3.9.2
+    # via -r /home/dusodeth/Documents/github/metro-sp-mdp/src/requirements.in
+flask==2.0.3
     # via -r /home/dusodeth/Documents/github/metro-sp-mdp/src/requirements.in
 fsspec==2021.11.1
     # via kedro
@@ -106,11 +113,14 @@ ipywidgets==7.6.5
     # via jupyter
 isort==5.10.1
     # via -r /home/dusodeth/Documents/github/metro-sp-mdp/src/requirements.in
+itsdangerous==2.1.0
+    # via flask
 jedi==0.18.1
     # via ipython
 jinja2==3.0.3
     # via
     #   cookiecutter
+    #   flask
     #   jinja2-time
     #   jupyter-server
     #   jupyterlab
@@ -269,6 +279,8 @@ pygments==2.11.2
     #   jupyterlab-pygments
     #   nbconvert
     #   qtconsole
+pyopenssl==22.0.0
+    # via -r /home/dusodeth/Documents/github/metro-sp-mdp/src/requirements.in
 pyparsing==3.0.7
     # via packaging
 pyrsistent==0.18.1
@@ -339,6 +351,8 @@ testpath==0.6.0
     # via nbconvert
 text-unidecode==1.3
     # via python-slugify
+thefuzz==0.19.0
+    # via -r /home/dusodeth/Documents/github/metro-sp-mdp/src/requirements.in
 toml==0.10.2
     # via
     #   black
@@ -380,6 +394,8 @@ webencodings==0.5.1
     # via bleach
 websocket-client==1.3.1
     # via jupyter-server
+werkzeug==2.0.3
+    # via flask
 wheel==0.36.2
     # via
     #   -r /home/dusodeth/Documents/github/metro-sp-mdp/src/requirements.in

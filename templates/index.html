@@ -1,14 +1,24 @@
 <!DOCTYPE html>
-<html lang="pt-br" dir="ltr">
+<html>
     <head>
         <meta charset="utf-8">
         <title>metro-sp-mdp</title>
     </head>
     <body>
-        <form class="" action="/resolve" method="post">
+        <form class="" action="{{ url_for('form_input') }}" method="POST">
             <label for="metro_from">da estação </label> <input type="text" name="metro_from" id='metro_from'> 
             <label for="metro_to">para a estação </label> <input type="text" name="metro_to" id='metro_to'> 
             <button type="submit" name="button">resolver</button>
         </form>
+
+        <br>
+
+        <div class="resultado">
+            {% if result %}
+                {% for value in result %}
+                    {{ value }} - 
+                {% endfor %}
+            {% endif %}
+        </div>
     </body>
 </html>
