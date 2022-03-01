@@ -4,16 +4,11 @@ from flask import (
     request,
     url_for
 )
-
 import pandas as pd
 import metro_sp_mdp.pipelines.mdp as sp_mdp
 
 
 app = Flask(__name__, template_folder='templates')
-
-# @app.route('/')
-# def hello_world():
-#     return 'Hello World!'
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -40,12 +35,7 @@ def form_input():
         sistema = sp_mdp.nodes.Problem(df, metro_from_fuzz, metro_to_fuzz)
         solucao = sp_mdp.pipeline.resolve_mdp(sistema)
 
-        return render_template('main.html', result=solucao['estacoes'])
-
-
-# @app.route('/resolve', methods=['POST'])
-# def predict():
-#     pass
+        return render_template('index.html', result=solucao['estacoes'])
 
 
 if __name__ == '__main__':
