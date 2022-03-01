@@ -5,11 +5,7 @@ entry_point = (
 )
 
 
-# get the dependencies and installs
 with open("requirements.txt", encoding="utf-8") as f:
-    # Make sure we strip all comments and options (e.g "--extra-index-url")
-    # that arise from a modified pip.conf file that configure global options
-    # when running kedro build-reqs
     requires = []
     for line in f:
         req = line.split("#", 1)[0].strip()
@@ -18,7 +14,7 @@ with open("requirements.txt", encoding="utf-8") as f:
 
 setup(
     name="metro_sp_mdp",
-    version="2.1.1",
+    version="2.1.2",
     url="https://github.com/thiagodsd/metro-sp-mdp",
     author="thiagodsd",
     author_email="thiagodsd@thiagodsd.com",
